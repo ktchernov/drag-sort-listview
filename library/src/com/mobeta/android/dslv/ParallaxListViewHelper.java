@@ -85,7 +85,6 @@ class ParallaxListViewHelper implements OnScrollListener {
 
 	private void setFilters(int top) {
         float offset = (float)top / parallaxFactor;
-        Log.d("SPAM", "Top: " + top + ", offset = " + offset);
 
 		parallaxedView.setOffset(offset);
 		if (alphaFactor != DISABLE_ALPHA_FACTOR) {
