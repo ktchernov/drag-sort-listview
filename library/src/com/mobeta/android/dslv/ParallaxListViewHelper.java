@@ -3,6 +3,7 @@ package com.mobeta.android.dslv;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
@@ -61,6 +62,10 @@ class ParallaxListViewHelper implements OnScrollListener {
 				fillParallaxedViews();
 				setFilters(top);
 			}
+            else if (parallaxedView != null) {
+                parallaxedView.resetEffects();
+                parallaxedView = null;
+            }
 		}
 	}
 
@@ -71,12 +76,18 @@ class ParallaxListViewHelper implements OnScrollListener {
 				if (top >= 0) {
 					setFilters(top);
 				}
+                else if (parallaxedView != null) {
+                    parallaxedView.resetEffects();
+                }
 			}
 		}
 	}
 
 	private void setFilters(int top) {
-		parallaxedView.setOffset((float)top / parallaxFactor);
+        float offset = (float)top / parallaxFactor;
+        Log.d("SPAM", "Top: " + top + ", offset = " + offset);
+
+		parallaxedView.setOffset(offset);
 		if (alphaFactor != DISABLE_ALPHA_FACTOR) {
             int height = parallaxedView.getMeasuredHeight();
             float alphaMod = ((float) (height - top)) / ((float) height);

@@ -413,7 +413,7 @@ public class DragSortListView extends ListView {
     private boolean mUseRemoveVelocity;
     private float mRemoveVelocityX = 0;
 
-    private ParallaxListViewHelper parallaxHelper;
+    private ParallaxListViewHelper mParallaxHelper;
 
     public DragSortListView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -509,8 +509,8 @@ public class DragSortListView extends ListView {
             }
 
             if (a.getBoolean(R.styleable.DragSortListView_parallax_enabled, false)) {
-                parallaxHelper = new ParallaxListViewHelper(getContext(), attrs, this);
-                super.setOnScrollListener(parallaxHelper);
+                mParallaxHelper = new ParallaxListViewHelper(getContext(), attrs, this);
+                super.setOnScrollListener(mParallaxHelper);
             }
 
             a.recycle();
@@ -552,8 +552,8 @@ public class DragSortListView extends ListView {
 
     @Override
     public void setOnScrollListener(OnScrollListener listener) {
-        if (parallaxHelper != null) {
-            parallaxHelper.setOnScrollListener(listener);
+        if (mParallaxHelper != null) {
+            mParallaxHelper.setOnScrollListener(listener);
         }
         else {
             super.setOnScrollListener(listener);
@@ -562,12 +562,12 @@ public class DragSortListView extends ListView {
 
     public void addParallaxedHeaderView(View view) {
         super.addHeaderView(view);
-        parallaxHelper.addParallaxedHeaderView(view);
+        mParallaxHelper.addParallaxedHeaderView(view);
     }
 
     public void addParallaxedHeaderView(View view, Object data, boolean isSelectable) {
         super.addHeaderView(view, data, isSelectable);
-        parallaxHelper.addParallaxedHeaderView(view);
+        mParallaxHelper.addParallaxedHeaderView(view);
     }
 
     /**

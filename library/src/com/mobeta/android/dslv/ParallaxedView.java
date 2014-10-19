@@ -81,4 +81,10 @@ public abstract class ParallaxedView {
 	public void setView(View view) {
 		this.view = new WeakReference<View>(view);
 	}
+
+    public void resetEffects() {
+        setOffset(0.f);
+        setAlpha(1.f);
+        animateNow();
+    }
 }
