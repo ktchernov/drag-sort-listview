@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import com.mobeta.android.dslv.DragSortListView;
 import com.mobeta.android.dslv.DragSortController;
 
-public class ParallexedHeadersDSLV extends ListActivity {
+public class ParallaxedHeadersDSLV extends ListActivity {
 
     private ArrayAdapter<String> adapter;
 

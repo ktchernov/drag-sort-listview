@@ -567,7 +567,7 @@ public class DragSortListView extends ListView {
 
     public void addParallaxedHeaderView(View view, Object data, boolean isSelectable) {
         super.addHeaderView(view, data, isSelectable);
-        parallaxHelper.addParallaxedHeaderView(view, data, isSelectable);
+        parallaxHelper.addParallaxedHeaderView(view);
     }
 
     /**

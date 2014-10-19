@@ -9,12 +9,10 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
-import com.mobeta.android.dslv.R;
-import com.mobeta.android.dslv.ParallaxedView;
+class ParallaxListViewHelper implements OnScrollListener {
 
-public class ParallaxListViewHelper implements OnScrollListener {
-
-	private static final float DEFAULT_ALPHA_FACTOR = -1F;
+	private static final float DISABLE_ALPHA_FACTOR = -1F;
+    private static final float DEFAULT_ALPHA_FACTOR = 0.8F;
 	private static final float DEFAULT_PARALLAX_FACTOR = 1.9F;
 	private static final boolean DEFAULT_IS_CIRCULAR = true;
 	private float parallaxFactor = DEFAULT_PARALLAX_FACTOR;
@@ -24,7 +22,7 @@ public class ParallaxListViewHelper implements OnScrollListener {
 	private OnScrollListener listener = null;
 	private ListView listView;
 
-	public ParallaxListViewHelper(Context context, AttributeSet attrs, ListView listView) {
+	ParallaxListViewHelper(Context context, AttributeSet attrs, ListView listView) {
 		init(context, attrs, listView);
 	}
 
@@ -42,10 +40,6 @@ public class ParallaxListViewHelper implements OnScrollListener {
 	}
 	
 	protected void addParallaxedHeaderView(View v) {
-		addParallaxedView(v);
-	}
-
-	protected void addParallaxedHeaderView(View v, Object data, boolean isSelectable) {
 		addParallaxedView(v);
 	}
 
@@ -83,15 +77,17 @@ public class ParallaxListViewHelper implements OnScrollListener {
 
 	private void setFilters(int top) {
 		parallaxedView.setOffset((float)top / parallaxFactor);
-		if (alphaFactor != DEFAULT_ALPHA_FACTOR) {
-			float alpha = (top <= 0) ? 1 : (100 / ((float)top * alphaFactor));
-			parallaxedView.setAlpha(alpha);
+		if (alphaFactor != DISABLE_ALPHA_FACTOR) {
+            int height = parallaxedView.getMeasuredHeight();
+            float alphaMod = ((float) (height - top)) / ((float) height);
+			float alpha = (alphaMod <= 0) ? 0 : alphaMod * alphaFactor;
+            parallaxedView.setAlpha(alpha);
 		}
 		parallaxedView.animateNow();
 	}
 
 	private void fillParallaxedViews() {
-		if (parallaxedView == null || parallaxedView.is(listView.getChildAt(0)) == false) {
+		if (parallaxedView == null || !parallaxedView.is(listView.getChildAt(0))) {
 			if (parallaxedView != null) {
 				resetFilters();
 				parallaxedView.setView(listView.getChildAt(0));
@@ -103,7 +99,7 @@ public class ParallaxListViewHelper implements OnScrollListener {
 
 	private void resetFilters() {
 		parallaxedView.setOffset(0);
-		if (alphaFactor != DEFAULT_ALPHA_FACTOR)
+		if (alphaFactor != DISABLE_ALPHA_FACTOR)
 			parallaxedView.setAlpha(1F);
 		parallaxedView.animateNow();
 	}

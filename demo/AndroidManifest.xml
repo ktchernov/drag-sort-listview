@@ -19,8 +19,8 @@
 
         <activity android:name="TestBedDSLV"
                   android:label="Basic usage" />
-        <activity android:name=".ParallexedHeadersDSLV"
-                  android:label="Context menu" />
+        <activity android:name=".ParallaxedHeadersDSLV"
+                  android:label="Parallaxed effect" />
         <activity android:name="ArbItemSizeDSLV"
                   android:label="Arbitrary item heights" />
         <activity android:name="WarpDSLV"

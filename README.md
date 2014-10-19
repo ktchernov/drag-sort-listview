@@ -6,7 +6,7 @@ DragSortListView
 News
 ----
 
-**October 18, 2014**: Version 0.7.0: Added an optional parallexed effect
+**October 18, 2014**: Version 0.7.0: Added an optional parallaxed effect
 
 **April 2, 2013**: Hey all. If you want to send a pull request,
 please read the [Contributing](https://github.com/bauerca/drag-sort-listview#contributing) section first. Thanks!
@@ -180,6 +180,8 @@ of 1 means items snap from position to position without animation.
 * `parallax_views_num`: - The number of parallaxed views
 * `circular_parallax`: - Whether all of the list is parallaxed or not
 * `parallax_alpha_factor`: - Alpha transparency applied to the parallaxed view during the effect.
+    0 to make the view parallaxed disappear immediately, 1 to make the parallaxed view disappear more gradually,
+    -1 to disable the effect. Default is 0.8.
 
 ### Listeners
 
