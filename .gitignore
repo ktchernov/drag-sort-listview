@@ -22,3 +22,10 @@ local.properties
 .project
 
 .idea
+gradlew
+gradle/
+gradlew.bat
+library/build/
+.gradle/
+build/
+*.iml
