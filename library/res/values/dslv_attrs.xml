@@ -26,5 +26,13 @@
     <attr name="fling_handle_id" format="integer" />
     <attr name="click_remove_id" format="integer" />
     <attr name="use_default_controller" format="boolean" />
+
+    <attr name="parallax_enabled" format="boolean" />
+    <attr name="parallax_factor" format="float" />
+    <attr name="parallax_alpha_factor" format="float" />
+    <attr name="inner_parallax_factor" format="float" />
+    <attr name="parallax_views_num" format="integer" />
+    <attr name="circular_parallax" format="boolean" />
+
   </declare-styleable>
 </resources>

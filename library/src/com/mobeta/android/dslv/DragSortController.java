@@ -1,6 +1,7 @@
 package com.mobeta.android.dslv;
 
 import android.graphics.Point;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;

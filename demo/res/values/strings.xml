@@ -3,6 +3,7 @@
     <string name="app_name">Drag-Sort Demos</string>
     <string-array name="activity_titles">
         <item>Basic usage playground</item>
+        <item>Parallexed Headers</item>
         <item>Heteroheight</item>
         <item>Warp</item>
         <item>Background handle</item>
@@ -16,6 +17,10 @@
             Use the menu to adjust settings related to item
             removal and drag initiation. These options are
             provided by the DragSortController class.
+        </item>
+        <item>
+            Demonstrates a context menu that is brought up on a
+            long click.
         </item>
         <item>
             Demonstrates (tests) drag-sorting when list items
@@ -55,6 +60,7 @@
     <string name="select_enables">Enable/Disable</string>
     <string name="add_header">Add header</string>
     <string name="add_footer">Add footer</string>
+    <string name="delete">Delete</string>
     <string-array name="remove_mode_labels">
       <item>Click remove</item>
       <item>Fling remove</item>

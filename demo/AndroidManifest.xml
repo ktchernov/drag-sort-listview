@@ -16,8 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name="TestBedDSLV"
                   android:label="Basic usage" />
+        <activity android:name=".ParallexedHeadersDSLV"
+                  android:label="Context menu" />
         <activity android:name="ArbItemSizeDSLV"
                   android:label="Arbitrary item heights" />
         <activity android:name="WarpDSLV"

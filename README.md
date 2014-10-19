@@ -1,13 +1,12 @@
 DragSortListView
 ================
 
-# NOTICE: No longer maintained.
-
-I do not have much time to devote to this project so I am
-dropping support for the time being. Sorry everybody!
+# NOTICE: Original is no longer maintained.
 
 News
 ----
+
+**October 18, 2014**: Version 0.7.0: Added an optional parallexed effect
 
 **April 2, 2013**: Hey all. If you want to send a pull request,
 please read the [Contributing](https://github.com/bauerca/drag-sort-listview#contributing) section first. Thanks!
@@ -175,6 +174,12 @@ of 1 means items snap from position to position without animation.
   `remove_enabled="true"`, a fling that originates on this child
   View removes the containing item. This attr is used by
   DragSortController.
+* `parallax_enabled`: - Enable Parallax effect. Defaults to circular effect (top items are parallaxed).
+* `parallax_factor`: - The first view's parallax factor
+* `inner_parallax_factor`: - The parallax factor between each view and view
+* `parallax_views_num`: - The number of parallaxed views
+* `circular_parallax`: - Whether all of the list is parallaxed or not
+* `parallax_alpha_factor`: - Alpha transparency applied to the parallaxed view during the effect.
 
 ### Listeners
 
@@ -464,5 +469,33 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```
+
+Additions from the ParallaxScroll library by Nir Hartmann, encorporated by Konstantin Tchernov under
+the MIT License.
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2014 Konstantin Tchernov
+Copyright (c) 2014 Nir Hartmann
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
