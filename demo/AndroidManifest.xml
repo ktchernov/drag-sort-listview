@@ -6,6 +6,7 @@
     <uses-sdk android:minSdkVersion="7"
       android:targetSdkVersion="19" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application android:label="@string/app_name"
             android:icon="@drawable/dslv_launcher" >
         <activity android:name="Launcher"
@@ -21,6 +22,8 @@
                   android:label="Basic usage" />
         <activity android:name=".ParallaxedHeadersDSLV"
                   android:label="Parallaxed effect" />
+        <activity android:name=".DragOutsideList"
+                  android:label="Drag outside list to delete" />
         <activity android:name="ArbItemSizeDSLV"
                   android:label="Arbitrary item heights" />
         <activity android:name="WarpDSLV"

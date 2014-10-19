@@ -15,6 +15,8 @@
     <attr name="remove_animation_duration" format="integer"/>
     <attr name="drop_animation_duration" format="integer"/>
     <attr name="drag_enabled" format="boolean" />
+    <attr name="drag_outside_bounds_up_enabled" format="boolean" />
+    <attr name="drag_outside_bounds_down_enabled" format="boolean" />
     <attr name="sort_enabled" format="boolean" />
     <attr name="remove_enabled" format="boolean" />
     <attr name="drag_start_mode">

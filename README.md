@@ -174,12 +174,14 @@ of 1 means items snap from position to position without animation.
   `remove_enabled="true"`, a fling that originates on this child
   View removes the containing item. This attr is used by
   DragSortController.
-* `parallax_enabled`: - Enable Parallax effect. Defaults to circular effect (top items are parallaxed).
-* `parallax_factor`: - The first view's parallax factor
-* `inner_parallax_factor`: - The parallax factor between each view and view
-* `parallax_views_num`: - The number of parallaxed views
-* `circular_parallax`: - Whether all of the list is parallaxed or not
-* `parallax_alpha_factor`: - Alpha transparency applied to the parallaxed view during the effect.
+* `drag_outside_bounds_up_enabled`: Allow dragging list items up off the bounds of the list view
+* `drag_outside_bounds_down_enabled`: Allow dragging list items down off the bounds of the list view
+* `parallax_enabled`: Enable Parallax effect. Defaults to circular effect (top items are parallaxed).
+* `parallax_factor`: The first view's parallax factor
+* `inner_parallax_factor`: The parallax factor between each view and view
+* `parallax_views_num`: The number of parallaxed views
+* `circular_parallax`: Whether all of the list is parallaxed or not
+* `parallax_alpha_factor`: Alpha transparency applied to the parallaxed view during the effect.
     0 to make the view parallaxed disappear immediately, 1 to make the parallaxed view disappear more gradually,
     -1 to disable the effect. Default is 0.8.
 

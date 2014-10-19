@@ -165,6 +165,9 @@ public class DragSortListView extends ListView {
      */
     private boolean mDragEnabled = true;
 
+    private boolean mDragOutsideBoundsUpEnabled = false;
+    private boolean mDragOutsideBoundsDownEnabled = false;
+
     /**
      * Drag state enum.
      */
@@ -441,6 +444,13 @@ public class DragSortListView extends ListView {
             mCurrFloatAlpha = mFloatAlpha;
 
             mDragEnabled = a.getBoolean(R.styleable.DragSortListView_drag_enabled, mDragEnabled);
+
+            if (mDragEnabled) {
+                mDragOutsideBoundsDownEnabled = a.getBoolean(R.styleable.DragSortListView_drag_outside_bounds_down_enabled,
+                        mDragOutsideBoundsDownEnabled);
+                mDragOutsideBoundsUpEnabled = a.getBoolean(R.styleable.DragSortListView_drag_outside_bounds_up_enabled,
+                        mDragOutsideBoundsUpEnabled);
+            }
 
             mSlideRegionFrac = Math.max(0.0f,
                     Math.min(1.0f, 1.0f - a.getFloat(
@@ -996,7 +1006,7 @@ public class DragSortListView extends ListView {
         if (mFloatViewMid < edge) {
             // scanning up for float position
             // Log.d("mobeta", "    edge="+edge);
-            while (itemPos >= 0) {
+            while (itemPos >= 1) {
                 itemPos--;
                 itemHeight = getItemHeight(itemPos);
 
@@ -2338,9 +2348,13 @@ public class DragSortListView extends ListView {
         // Log.d("mobeta", "mDragDeltaY=" + mDragDeltaY);
 
         if (floatY < topLimit) {
-            mFloatLoc.y = topLimit;
+            if (!mDragOutsideBoundsUpEnabled) {
+                mFloatLoc.y = topLimit;
+            }
         } else if (floatY + mFloatViewHeight > bottomLimit) {
-            mFloatLoc.y = bottomLimit - mFloatViewHeight;
+            if (!mDragOutsideBoundsDownEnabled) {
+                mFloatLoc.y = bottomLimit - mFloatViewHeight;
+            }
         }
 
         // get y-midpoint of floating view (constrained to ListView bounds)
