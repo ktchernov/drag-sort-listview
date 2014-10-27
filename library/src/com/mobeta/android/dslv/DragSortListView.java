@@ -2320,26 +2320,39 @@ public class DragSortListView extends ListView {
         final int firstPos = getFirstVisiblePosition();
         final int lastPos = getLastVisiblePosition();
 
-        // Log.d("mobeta",
-        // "nHead="+numHeaders+" nFoot="+numFooters+" first="+firstPos+" last="+lastPos);
-        int topLimit = getPaddingTop();
-        if (firstPos < numHeaders) {
-            topLimit = getChildAt(numHeaders - firstPos - 1).getBottom();
+        boolean dragUpEnabled = (mDragFlags & DRAG_NEG_Y) != 0;
+        boolean dragDownEnabled = (mDragFlags & DRAG_POS_Y) != 0;
+
+        int topLimit;
+        if (mDragOutsideBoundsUpEnabled && dragUpEnabled) {
+            topLimit = Integer.MIN_VALUE;
         }
-        if ((mDragFlags & DRAG_NEG_Y) == 0) {
-            if (firstPos <= mSrcPos) {
-                topLimit = Math.max(getChildAt(mSrcPos - firstPos).getTop(), topLimit);
+        else {
+            topLimit = getPaddingTop();
+
+            if (firstPos < numHeaders) {
+                topLimit = getChildAt(numHeaders - firstPos - 1).getBottom();
+            }
+            if ((mDragFlags & DRAG_NEG_Y) == 0) {
+                if (firstPos <= mSrcPos) {
+                    topLimit = Math.max(getChildAt(mSrcPos - firstPos).getTop(), topLimit);
+                }
             }
         }
-        // bottom limit is top of first footer View or
-        // bottom of last item in list
-        int bottomLimit = getHeight() - getPaddingBottom();
-        if (lastPos >= getCount() - numFooters - 1) {
-            bottomLimit = getChildAt(getCount() - numFooters - 1 - firstPos).getBottom();
+
+        int bottomLimit;
+        if (mDragOutsideBoundsDownEnabled && dragDownEnabled) {
+            bottomLimit = Integer.MAX_VALUE;
         }
-        if ((mDragFlags & DRAG_POS_Y) == 0) {
-            if (lastPos >= mSrcPos) {
-                bottomLimit = Math.min(getChildAt(mSrcPos - firstPos).getBottom(), bottomLimit);
+        else {
+            bottomLimit = getHeight() - getPaddingBottom();
+            if (lastPos >= getCount() - numFooters - 1) {
+                bottomLimit = getChildAt(getCount() - numFooters - 1 - firstPos).getBottom();
+            }
+            if ((mDragFlags & DRAG_POS_Y) == 0) {
+                if (lastPos >= mSrcPos) {
+                    bottomLimit = Math.min(getChildAt(mSrcPos - firstPos).getBottom(), bottomLimit);
+                }
             }
         }
 
@@ -2348,13 +2361,9 @@ public class DragSortListView extends ListView {
         // Log.d("mobeta", "mDragDeltaY=" + mDragDeltaY);
 
         if (floatY < topLimit) {
-            if (!mDragOutsideBoundsUpEnabled) {
-                mFloatLoc.y = topLimit;
-            }
+            mFloatLoc.y = topLimit;
         } else if (floatY + mFloatViewHeight > bottomLimit) {
-            if (!mDragOutsideBoundsDownEnabled) {
-                mFloatLoc.y = bottomLimit - mFloatViewHeight;
-            }
+            mFloatLoc.y = bottomLimit - mFloatViewHeight;
         }
 
         // get y-midpoint of floating view (constrained to ListView bounds)
