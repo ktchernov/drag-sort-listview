@@ -64,18 +64,20 @@ public abstract class ParallaxedView {
 	}
 	
 	protected synchronized void animateNow() {
-		View view = this.view.get();
-		if (view != null) {
-			AnimationSet set = new AnimationSet(true);
-			for (Animation animation : animations)
-				if (animation != null)
-					set.addAnimation(animation);
-			set.setDuration(0);
-			set.setFillAfter(true);
-			view.setAnimation(set);
-			set.start();
-			animations.clear();
-		}
+        if (!animations.isEmpty()) {
+            View view = this.view.get();
+            if (view != null) {
+                AnimationSet set = new AnimationSet(true);
+                for (Animation animation : animations)
+                    if (animation != null)
+                        set.addAnimation(animation);
+                set.setDuration(0);
+                set.setFillAfter(true);
+                view.setAnimation(set);
+                set.start();
+                animations.clear();
+            }
+        }
 	}
 	
 	public void setView(View view) {
